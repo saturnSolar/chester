@@ -1,9 +1,11 @@
 const Discord = require("discord.js")
 const WOKCommands = require("wokcommands")
 const path = require("path")
+const mongoose = require("mongoose")
 require("dotenv").config()
 
 const generatedImage = require("./generateImage")
+const messagecounter = require("./message-counter")
 //const { default: WOKCommands } = require("wokcommands")
 
 var userlist = []
@@ -15,13 +17,14 @@ const client = new Discord.Client({
     ]
 })
 
-client.on("ready", () => {
+client.on("ready", async() => {
     console.log(`logged in as ${client.user.tag}`)
-
+    
     /*new WOKCommands(client, {
         commandsDir: path.join(__dirname, "commands"),
         testServers: "766527846927564810",
     })*/
+    messagecounter(client)
     const guildID = "766527846927564810"
     const guild = client.guilds.cache.get(guildID)
     let commands
