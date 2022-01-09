@@ -18,7 +18,7 @@ const generatedImage = async (member) => {
 
     context.fillStyle = "white"
     context.textAlign = "center"
-
+    context.lineWidth = "5"
     context.font = "200px Roboto"
     context.fillText(`here you go ${member.user.username} :)`, dim.width/2, 200)
     context.strokeText(`here you go ${member.user.username} :)`, dim.width/2, 200)
